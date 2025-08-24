@@ -5,5 +5,4 @@ scipy
 statsmodels
 plotly
 Pillow
-os
 pathlib
