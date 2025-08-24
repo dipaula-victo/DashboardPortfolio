@@ -1,6 +1,5 @@
 import streamlit as st
 from PIL import Image
-from pathlib import Path
 
 # Carrega a imagem da logo
 logo = Image.open('img/logo.png')
@@ -13,12 +12,6 @@ st.set_page_config(
 )
 
 def education_experience_page():
-    # --- NOVO: Define o caminho raiz do projeto de forma confiável ---
-    # Path(__file__) -> Pega o caminho do arquivo atual (1_Formação_e_experiências.py)
-    # .parent -> Sobe um nível para a pasta 'pages'
-    # .parent -> Sobe mais um nível para a pasta raiz do projeto
-    PROJECT_ROOT = Path(__file__).parent.parent
-    CERTIFICADOS_DIR = PROJECT_ROOT / "certificados" # Cria o caminho para a pasta de certificados
     
     # Adiciona a logo na sidebar
     with st.sidebar:
@@ -79,7 +72,7 @@ def education_experience_page():
     """, unsafe_allow_html=True)
 
     with col2:
-        cert_path_1 = CERTIFICADOS_DIR / "Algoritmos - Aprenda a programar.pdf"
+        cert_path_1 = "../certificados/Algoritmos - Aprenda a programar.pdf"
         with open(cert_path_1, "rb") as file:
             btn = st.download_button(
                 label="Certificado - Algoritmos",
@@ -88,7 +81,7 @@ def education_experience_page():
                 mime="application/pdf"
             )
         
-        cert_path_2 = CERTIFICADOS_DIR / "Design Thinking - Process.pdf"
+        cert_path_2 = "../certificados/Design Thinking - Process.pdf"
         with open(cert_path_2, "rb") as file:
             btn = st.download_button(
                 label="Certificado - Design Thinking",
@@ -97,7 +90,7 @@ def education_experience_page():
                 mime="application/pdf"
             )
         
-        cert_path_3 = CERTIFICADOS_DIR / "Estruturas de Computadores.pdf"
+        cert_path_3 = "../certificados/Estruturas de Computadores.pdf"
         with open(cert_path_3, "rb") as file:
             btn = st.download_button(
                 label="Certificado - Estruturas de Computadores",
@@ -106,7 +99,7 @@ def education_experience_page():
                 mime="application/pdf"
             )
         
-        cert_path_4 = CERTIFICADOS_DIR / "Formação Social e Sustentabilidade.pdf"
+        cert_path_4 = "../certificados/Formação Social e Sustentabilidade.pdf"
         with open(cert_path_4, "rb") as file:
             btn = st.download_button(
                 label="Certificado - Formação Social e Sustentabilidade",
@@ -115,7 +108,7 @@ def education_experience_page():
                 mime="application/pdf"
             )
         
-        cert_path_5 = CERTIFICADOS_DIR / "Trilha de Treinamentos Comportamentais.pdf"
+        cert_path_5 = "../certificados/Trilha de Treinamentos Comportamentais.pdf"
         with open(cert_path_5, "rb") as file:
             btn = st.download_button(
                 label="Certificado - Trilha de Treinamentos Comportamentais",
