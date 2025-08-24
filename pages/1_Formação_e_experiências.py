@@ -1,7 +1,6 @@
 import streamlit as st
 from PIL import Image
 from pathlib import Path
-import os
 
 # Carrega a imagem da logo
 logo = Image.open('img/logo.png')
@@ -14,49 +13,9 @@ st.set_page_config(
 )
 
 def education_experience_page():
-    # --- CÓDIGO DE DIAGNÓSTICO ---
-    st.subheader("🕵️‍♀️ Informações de Diagnóstico 🕵️‍♀️")
-    st.info("Esta seção é para depuração e pode ser removida após a solução do problema.")
-
-    try:
-        # Define os caminhos
-        project_root = Path(__file__).parent.parent
-        certificados_dir = project_root / "certificados"
-        cert_path_exemplo = certificados_dir / "Algoritmos - Aprenda a programar.pdf"
-
-        st.write("**Caminho Raiz do Projeto Calculado:**")
-        st.code(str(project_root))
-
-        st.write("**Caminho da Pasta de Certificados Calculado:**")
-        st.code(str(certificados_dir))
-
-        st.write("**Conteúdo da Pasta Raiz do Projeto:**")
-        st.code(os.listdir(project_root))
-
-        st.write(f"**A pasta '{certificados_dir.name}' existe?**")
-        st.code(str(certificados_dir.exists()))
-
-        if certificados_dir.exists():
-            st.write("**Conteúdo da Pasta de Certificados:**")
-            st.code(os.listdir(certificados_dir))
-            
-            st.write(f"**O arquivo de exemplo '{cert_path_exemplo.name}' existe?**")
-            st.code(str(cert_path_exemplo.exists()))
-
-            if cert_path_exemplo.exists():
-                file_size = cert_path_exemplo.stat().st_size
-                st.write("**Tamanho do arquivo de exemplo (em bytes):**")
-                st.code(str(file_size))
-                if file_size < 1000:
-                    st.warning("ALERTA: O tamanho do arquivo é muito pequeno! Isso indica que pode ser um ponteiro do Git LFS e não o arquivo real. O download do LFS pode ter falhado no servidor.")
-                else:
-                    st.success("O tamanho do arquivo parece correto (não é um ponteiro LFS).")
-
-    except Exception as e:
-        st.error(f"Ocorreu um erro durante o diagnóstico: {e}")
-    
-    st.divider()
-    # --- FIM DO CÓDIGO DE DIAGNÓSTICO ---
+    # Define o caminho raiz do projeto de forma confiável
+    PROJECT_ROOT = Path(__file__).parent.parent
+    CERTIFICADOS_DIR = PROJECT_ROOT / "certificados"
 
     # Adiciona a logo na sidebar
     with st.sidebar:
@@ -68,10 +27,6 @@ def education_experience_page():
     with col2:
         st.title("Formação e Experiências")
     
-    # ... (o resto do seu código permanece exatamente o mesmo)
-    PROJECT_ROOT = Path(__file__).parent.parent
-    CERTIFICADOS_DIR = PROJECT_ROOT / "certificados"
-
     st.divider()
     st.subheader("Formação Acadêmica")
     st.markdown("""
@@ -112,50 +67,61 @@ def education_experience_page():
     """, unsafe_allow_html=True)
 
     with col2:
+
+        # Certificado 1
         cert_path_1 = CERTIFICADOS_DIR / "Algoritmos - Aprenda a programar.pdf"
         with open(cert_path_1, "rb") as file:
-            st.download_button(
-                label="Certificado - Algoritmos",
-                data=file,
-                file_name="certificado_de_algoritmos.pdf",
-                mime="application/pdf"
-            )
+            pdf_bytes_1 = file.read() # Lê o conteúdo para uma variável
+        st.download_button(
+            label="Certificado - Algoritmos",
+            data=pdf_bytes_1, # Passa os bytes diretamente
+            file_name="certificado_de_algoritmos.pdf",
+            mime="application/pdf"
+        )
         
+        # Certificado 2
         cert_path_2 = CERTIFICADOS_DIR / "Design Thinking - Process.pdf"
         with open(cert_path_2, "rb") as file:
-            st.download_button(
-                label="Certificado - Design Thinking",
-                data=file,
-                file_name="certificado_de_design_thinking.pdf",
-                mime="application/pdf"
-            )
+            pdf_bytes_2 = file.read()
+        st.download_button(
+            label="Certificado - Design Thinking",
+            data=pdf_bytes_2,
+            file_name="certificado_de_design_thinking.pdf",
+            mime="application/pdf"
+        )
         
+        # Certificado 3
         cert_path_3 = CERTIFICADOS_DIR / "Estruturas de Computadores.pdf"
         with open(cert_path_3, "rb") as file:
-            st.download_button(
-                label="Certificado - Estruturas de Computadores",
-                data=file,
-                file_name="certificado_de_estrutura_de_computadores.pdf",
-                mime="application/pdf"
-            )
+            pdf_bytes_3 = file.read()
+        st.download_button(
+            label="Certificado - Estruturas de Computadores",
+            data=pdf_bytes_3,
+            file_name="certificado_de_estrutura_de_computadores.pdf",
+            mime="application/pdf"
+        )
         
+        # Certificado 4
         cert_path_4 = CERTIFICADOS_DIR / "Formação Social e Sustentabilidade.pdf"
         with open(cert_path_4, "rb") as file:
-            st.download_button(
-                label="Certificado - Formação Social e Sustentabilidade",
-                data=file,
-                file_name="certificado_de_formação_social_e_sustentabilidade.pdf",
-                mime="application/pdf"
-            )
+            pdf_bytes_4 = file.read()
+        st.download_button(
+            label="Certificado - Formação Social e Sustentabilidade",
+            data=pdf_bytes_4,
+            file_name="certificado_de_formação_social_e_sustentabilidade.pdf",
+            mime="application/pdf"
+        )
         
+        # Certificado 5
         cert_path_5 = CERTIFICADOS_DIR / "Trilha de Treinamentos Comportamentais.pdf"
         with open(cert_path_5, "rb") as file:
-            st.download_button(
-                label="Certificado - Trilha de Treinamentos Comportamentais",
-                data=file,
-                file_name="certificado_de_trilha_de_treinamentos_comportamentais.pdf",
-                mime="application/pdf"
-            )
+            pdf_bytes_5 = file.read()
+        st.download_button(
+            label="Certificado - Trilha de Treinamentos Comportamentais",
+            data=pdf_bytes_5,
+            file_name="certificado_de_trilha_de_treinamentos_comportamentais.pdf",
+            mime="application/pdf"
+        )
     
     st.subheader("Projetos Acadêmicos")
     st.markdown("""
